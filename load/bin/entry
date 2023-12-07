@@ -10,8 +10,9 @@ mkdir -p $LOG_PATH
 OPEN_CONNECT=/ws/config
 if [ ! -d $OPEN_CONNECT ]; then
     mkdir -p $OPEN_CONNECT
-    echo "# https://www.infradead.org/openconnect/index.html" > $OPEN_CONNECT/openconnect.sh
-    echo "sudo openconnect ..." >> $OPEN_CONNECT/openconnect.sh
+    echo "#!/bin/sh" > $OPEN_CONNECT/openconnect.sh
+    echo "# https://www.infradead.org/openconnect/index.html" >> $OPEN_CONNECT/openconnect.sh
+    echo "openconnect ..." >> $OPEN_CONNECT/openconnect.sh
 fi
 
 /usr/bin/supervisord -c /etc/supervisord.conf &
