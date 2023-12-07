@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cat /ws/keys/*.pub > /etc/ssh/authorized_keys
+chmod 600 /etc/ssh/authorized_keys
