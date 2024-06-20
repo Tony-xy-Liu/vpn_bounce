@@ -15,5 +15,19 @@ if [ ! -d $OPEN_CONNECT ]; then
     echo "openconnect ..." >> $OPEN_CONNECT/openconnect.sh
 fi
 
-/usr/bin/supervisord -c /etc/supervisord.conf &
-exec $@
+case $1 in
+    --shell)
+        shift
+        /usr/bin/supervisord -c /etc/supervisord.conf &
+        PID=$!
+        /bin/sh
+        kill $PID
+        while x=$(ps | grep supervisord | wc -w) && [[ "$x" -gt 5 ]]; do
+            sleep 0.5
+        done
+    ;;
+    *)
+        echo "NOTICE: use --shell to enter shell"
+        /usr/bin/supervisord -c /etc/supervisord.conf
+    ;;
+esac

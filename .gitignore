@@ -1,6 +1,7 @@
 cache
 *.sif
 
+/ws
 /scratch
 /secrets
 /data

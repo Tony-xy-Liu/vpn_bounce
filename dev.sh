@@ -35,16 +35,17 @@ case $1 in
             # -u $(id -u):$(id -g) \
 
             # --mount type=bind,source="$HERE/scratch/sshd",target="/var/run/sshd" \
+        shift
         docker run -it --rm \
             -p 2222:22 \
             --cap-add NET_ADMIN \
-            --device /dev/vhost-net \
-            --mount type=bind,source="$HERE/scratch",target="/ws" \
+            --device /dev/vhost-net \   
+            --mount type=bind,source="$HERE/ws",target="/ws" \
             --workdir="/ws" \
             --name $NAME \
             --hostname $NAME \
             $DOCKER_IMAGE \
-            /bin/sh
+            $@
     ;;
     -t)
         ssh btest
