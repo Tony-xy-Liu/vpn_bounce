@@ -39,7 +39,7 @@ case $1 in
         docker run -it --rm \
             -p 2222:22 \
             --cap-add NET_ADMIN \
-            --device /dev/vhost-net \   
+            --device /dev/vhost-net \
             --mount type=bind,source="$HERE/ws",target="/ws" \
             --workdir="/ws" \
             --name $NAME \
