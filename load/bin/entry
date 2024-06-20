@@ -13,6 +13,7 @@ if [ ! -d $OPEN_CONNECT ]; then
     echo "#!/bin/sh" > $OPEN_CONNECT/openconnect.sh
     echo "# https://www.infradead.org/openconnect/index.html" >> $OPEN_CONNECT/openconnect.sh
     echo "openconnect ..." >> $OPEN_CONNECT/openconnect.sh
+    chmod 777 $OPEN_CONNECT/openconnect.sh
 fi
 
 case $1 in
