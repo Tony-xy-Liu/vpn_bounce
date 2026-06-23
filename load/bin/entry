@@ -16,6 +16,9 @@ if [ ! -d $OPEN_CONNECT ]; then
     chmod 777 $OPEN_CONNECT/openconnect.sh
 fi
 
+ip link set dev eth0 mtu 1400
+echo mtu at 1400
+
 case $1 in
     --shell)
         shift
